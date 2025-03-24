@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dev Jaine Silva - Desafio Pokémon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Secular+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .logo-jaine {
+      width: 200px;
+      margin-bottom: 1rem;
+    }
+
+    #pokemon-evolution {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px #ff69b4aa;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .display {
+      width: 80%;
+      padding: 0.5rem;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    #poke-image {
+      width: 200px;
+      margin: 1rem 0;
+    }
+
+    input[type="button"] {
+      margin: 5px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #ff69b4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background: #e44a92;
+    }
+
+    #copyrigth {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="pokemon-evolution">
+      <img src="https://img.icons8.com/color/96/000000/pokeball-2.png" class="logo-jaine" alt="Pokémon by Jaine">
+      <p class="message">Acerte o nome e evolua seu Pokémon!</p>
+
+      <form name="screen"> 
+        <input class="display" name="display" placeholder="Digite o nome aqui e clique em Evoluir" required autofocus>
+      </form>
+
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" id="poke-image">
+
+      <br>
+      <input type="button" id="checkButton" onclick="check()" value="Evoluir">
+      <input type="button" id="clearButton" onclick="clearScreen()" value="Limpar tela">
+    </section>
+
+    <p id="copyrigth">Desenvolvido com 💖 por <strong>Dev Jaine Silva</strong></p>
+  </main>
+
+  <script>
+    let pokemons = [
+      { nome: "bulbasaur", img: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png" },
+      { nome: "ivysaur", img: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png" },
+      { nome: "venusaur", img: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png" }
+    ];
+
+    let current = 0;
+
+    function check() {
+      let resposta = document.screen.display.value.toLowerCase();
+      if (resposta === pokemons[current + 1]?.nome) {
+        current++;
+        document.getElementById("poke-image").src = pokemons[current].img;
+        alert("Evoluiu para " + pokemons[current].nome + "!");
+      } else {
+        alert("Ops! Tente novamente.");
+      }
+    }
+
+    function clearScreen() {
+      document.screen.display.value = "";
+      current = 0;
+      document.getElementById("poke-image").src = pokemons[current].img;
+    }
+  </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
